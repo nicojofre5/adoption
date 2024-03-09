@@ -1,3 +1,4 @@
 export function getAllProductos(buscar){
-    return fetch(`https://api`).then;
+   
+    return fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${buscar}`).then(res=>res.json())
 }

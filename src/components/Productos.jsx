@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllProductos } from "../Services/productosService";
+import { getAllProductos } from "../services/ProductoServicio";
 import Producto from "./Producto";
 
 function Productos() {
