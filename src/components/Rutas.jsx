@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "../pages/Home";
-import Login from "../pages/Loguear";
+import Login from "../pages/Login";
 import Registro from "../pages/Registro";
 import { Routes, Route } from "react-router-dom";
 function Rutas() {

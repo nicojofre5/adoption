@@ -1,7 +1,7 @@
 import React from "react";
 
 function Registro() {
-  return <div>Login</div>;
+  return <div>Registro</div>;
 }
 
-export default Registro();
+export default Registro;
