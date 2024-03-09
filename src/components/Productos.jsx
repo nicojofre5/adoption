@@ -36,16 +36,7 @@ function Productos() {
     return (
       <>
      
-        <div id="buscador">
-          
-          <input
-            type="text"
-            name="buscar"
-            value={buscar}
-            onChange={handleChange}
-            placeholder="Realice su búsqueda..."
-          />
-          </div>
+      
        
         {productos.slice(1, 17).map((producto) => (
           <Producto

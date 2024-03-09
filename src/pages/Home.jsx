@@ -1,8 +1,11 @@
 import React from "react";
-
+import BannerInicial from '../components/Banner';
 function Home(){
     return(
-       <div>inicio</div>
+       <>
+        <BannerInicial />
+       </>
+       
     );
 }
 
