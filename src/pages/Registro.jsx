@@ -1,60 +1,87 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+//import { useState } from "react";
+import { create } from "../services/UsuarioService";
 
 function Registro() {
-  return (
-    <div class="cont-form">
-      <h1>Registrarse</h1>
-      <div class="contenedorform">
-        <form action="#" method="post" class="form-registrar">
-          <label for="nombre">Nombre</label>
-          <input
-            type="text"
-            name="nombre"
-            id=""
-            required
-            placeholder="Ingresar nombre"
-          />
-          <label for="apellido">Apellido</label>
-          <input
-            type="text"
-            name="apellido"
-            id=""
-            required
-            placeholder="Ingresar apellido"
-          />
-          <label for="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            id=""
-            required
-            placeholder="Ingresar email"
-          />
-          <label for="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id=""
-            required
-            placeholder="Ingresar password"
-          />
-          <label for="confpassword">Confirmar password</label>
-          <input
-            type="password"
-            name="confpassword"
-            id=""
-            required
-            placeholder="Repetir password"
-          />
-          <div class="cont-button-submit">
-            <button type="submit" class="enviar-form">
-              Enviar
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({ mode: "onChange" });
+
+    const onSubmit = (data) => {
+        console.log(data);
+    };
+
+    return (
+        <div>
+            <h1>Regístrese</h1>
+            <form onSubmit={handleSubmit(onSubmit)}>
+
+                <label>Nombre</label> <br />
+                <input type="text" {...register("nombre", { required: true })} />
+                {errors.nombre && (
+
+                    <span>El campo es obligatorio</span>
+
+                )} <br />
+
+                <label>Apellido</label> <br />
+                <input type="text" {...register("apellido")} />
+
+                <br />
+                <label>Email</label> <br />
+                <input
+                    type="text"
+                    {...register("email", {
+                        required: true,
+                        pattern:
+                            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/i,
+                    })}
+                />
+                <br />
+                {errors.email && (
+                    <>
+                        {errors.email?.type === "required" && (
+                            <span>El campo es obligatorio</span>
+                        )}
+                        {errors.email?.type === "pattern" && (
+                            <span>Formato email no valido</span>
+                        )}
+                    </>
+                )}
+                <br />
+                <label>Contraseña</label> <br />
+                <input
+                    type="password"
+                    {...register("password", {
+                        required: true,
+                        minLength: 6,
+                        maxLength: 12,
+                    })} required
+                /> <br />
+                {errors.password && (
+                    <>
+                        {errors.password?.type === "required" && (
+                            <span>El campo es obligatorio</span>
+                        )}
+                        {errors.password?.type === "minLength" && (
+                            <span>Debe completar al menos 6 caracteres</span>
+                        )}
+                        {errors.password?.type === "maxLength" && (
+                            <span>Debe completar menos de 12 caracteres</span>
+                        )}
+                    </>
+                )} <br />
+
+                <button type="submit" id="botonComprar">Registrarse</button>
+            </form>
+
+        </div >
+    );
 }
+
 
 export default Registro;
