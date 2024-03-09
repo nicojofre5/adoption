@@ -1,15 +1,24 @@
 import React from "react";
+import Home from "../pages/Home";
+import Login from "../pages/Loguear";
+import Registro from "../pages/Registro";
+import {Link} from "react-router-dom";
 
 function NavBar(){
     return(
-        <nav>
-            <ul>
-                <li>Home</li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </nav>
+        <nav className="nav-bar">
+        <ul className="menu">
+          <Link to="/" element={<Home />} className="nav-link">
+            Home
+          </Link>
+          <Link to="/Loguear" element={<Login />} className="nav-link">
+            Login
+          </Link>
+          <Link to="/Registro" element={<Registro />} className="nav-link">
+            Registro
+          </Link>
+        </ul>
+      </nav>
     );
 }
 
