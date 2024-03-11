@@ -2,6 +2,7 @@ import React from "react";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Registro from "../pages/Registro";
+import AltaPerro from "../pages/AltaPerri";
 import { Link } from "react-router-dom";
 import imgico from "../img/icoperri.png"
 
@@ -21,6 +22,9 @@ function NavBar() {
         </Link>
         <Link to="/Registro" element={<Registro />} className="nav-link">
           Registro
+        </Link>
+        <Link to="/Altaperro" element={<AltaPerro />} className="nav-link">
+          Alta
         </Link>
       </ul>
     </nav>
