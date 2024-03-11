@@ -11,8 +11,14 @@ function Registro() {
         formState: { errors },
     } = useForm({ mode: "onChange" });
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        try {
+            const user = await create(data);
+            alert("Usuario creado");
+            console.log("El usuario creado es: " , user);
+        } catch (error) {
+            
+        }
     };
 
     return (
