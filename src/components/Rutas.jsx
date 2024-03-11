@@ -7,7 +7,7 @@ function Rutas() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/Loguear" element={<Login />} />
+      <Route path="/Login" element={<Login />} />
       <Route path="/Registro" element={<Registro />} />
     </Routes>
   );

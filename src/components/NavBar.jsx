@@ -16,7 +16,7 @@ function NavBar() {
         <Link to="/" element={<Home />} className="nav-link">
           Home
         </Link>
-        <Link to="/Loguear" element={<Login />} className="nav-link">
+        <Link to="/Login" element={<Login />} className="nav-link">
           Login
         </Link>
         <Link to="/Registro" element={<Registro />} className="nav-link">

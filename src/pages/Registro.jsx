@@ -12,14 +12,26 @@ function Registro() {
     } = useForm({ mode: "onChange" });
 
     const onSubmit = async (data) => {
-        try {
-            const user = await create(data);
-            alert("Usuario creado");
-            console.log("El usuario creado es: " , user);
-        } catch (error) {
-            
-        }
-    };
+    //setLoading(true);
+    try {
+      const user = await create(data);
+      alert("hola");
+      console.log("Este es el user creado: ", user);
+      //setLoading(false);
+      /*setAlert({
+        variant: "success",
+        text: "Gracias por registrarte",
+        duration: 3000,
+        link: "/ingresar",
+      });*/
+
+    } catch (e) {
+        alert("error de usuario");
+      console.log(e.code);
+
+
+    }
+  };
 
     return (
         <div>

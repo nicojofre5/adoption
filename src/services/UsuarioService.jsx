@@ -1,16 +1,18 @@
 import firebase from "../Config/firebase";
 
 export async function create(payload){
-    const responseUser = await firebase.auth().createUserWithEmailAndPassword(payload.email);
-    console.log("Create id del usuario", responseUser.user.id);
-    const document = await firebase.firestore().collection("usuario").add({
-        name:payload.nombre,
-        lastname:payload.apellido,
-        userId:responseUser.user.uid
-    })
-    console.log(document);
+   const responseUser = await firebase.auth().createUserWithEmailAndPassword(payload.email,payload.password);
+   console.log("Create ID del usuario:", responseUser.user.uid);
+   const document = await firebase.firestore().collection("usuarios")
+   .add({
+    name:payload.nombre,
+    lastname:payload.apellido,
+    userId:responseUser.user.uid
+   })
+   console.log("Entró a firebase",document)
+   
 
-    return document
+   return document
 }
 
 export async function login(email,password){

@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-import { login } from '../services/UsuarioService';
+import { login } from "../services/UsuarioService";
 
 function Login() {
 
@@ -11,8 +10,15 @@ function Login() {
         formState: { errors },
       } = useForm({ mode: "onChange" });
     
-      const onSubmit = (data) => {
-        console.log(data);
+      const onSubmit = async (data) => {
+        try {
+          const user = await login(data.email, data.password);
+          alert("Logueado con éxito!!!");
+          console.log("Se logueó el user: ", user);
+        } catch (error) {
+          alert("Error en loggin: ",error.code)
+          console.log("Error en login: ",error.code);
+        }
       };
     
       return (
@@ -20,7 +26,7 @@ function Login() {
           <h1>Login</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <label>Usuario</label><br />
-            <input type="text" {...register("usuario", { required: true })} /><br />
+            <input type="email" {...register("email", { required: true })} /><br />
             <label>Contraseña</label> <br />
             <input
               type="password"

@@ -26,6 +26,7 @@ function Producto(props) {
             <button className="comprar" id="comprar" onClick={handleComprar}>
               Comprar
             </button>
+            <button id="modificar">Modificar</button>
             </div>
         </div>
       </div>
