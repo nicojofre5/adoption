@@ -1,37 +1,26 @@
 import React, { useState } from "react";
 
-function Producto(props) {
 
-  const [comprar, setComprar] = useState("");
+function Producto({id, nombre, precio, thumbnail, categoria }) {
 
-  const handleComprar = (e) => {
-    setComprar("Compró el producto")
-  };
-  return (
-    <>
-     
-      <div class="cont-card">
-        <div class="card">
-          <h1>{props.nombre}</h1>
-          <picture>
-            <img src={props.imagen} alt="Imagen nike" />
-          </picture>
-          <div class="cont-precio">
-            <h2> $ {props.precio}</h2>
-          </div>
-          
-          <div>{comprar}</div>
-          <div class="cont-button">
-            
-            <button className="comprar" id="comprar" onClick={handleComprar}>
-              Comprar
-            </button>
-            <button id="modificar">Modificar</button>
-            </div>
+    const [comprar, setComprar] = useState("");
+
+    const handleComprar = (e) =>{
+        setComprar("Compró el producto!!!")
+    }
+
+    return (
+        <div className="contenerdorProducto">
+            <img src={thumbnail} alt="Imagen producto" /><br />
+            <div className="nombreYPrecio">
+            <h2>{nombre}</h2>
+            <h3>AR${precio}</h3>
+            </div><br />
+            <h3>{categoria}</h3>
+            <div>{comprar}</div>
+            <button id="botonComprar" onClick={handleComprar}>Comprar</button><button id="modificar">Modificar</button>
         </div>
-      </div>
-    </>
-  );
+    )
 }
 
 export default Producto;
