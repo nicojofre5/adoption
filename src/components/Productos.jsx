@@ -5,12 +5,12 @@ import Producto from "./Producto";
 function Productos() {
   const [loading, setLoading] = useState(true);
   const [productos, setProductos] = useState();
-  const [buscar, setBuscar] = useState("iPhone");
+
 
   useEffect(() => {
     const request = async () => {
       try {
-        const response = await getAllProductos(buscar);
+        const response = await getAllProductos();
 
         console.log("Desde productos:", response.results);
 
@@ -22,13 +22,9 @@ function Productos() {
     };
 
     request();
-  }, [buscar]);
+  }, []);
 
-  // const handleChange = (event) => {
-  //   const value = event.target.value;
-  //   console.log(value);
-  //   setBuscar(value);
-  // };
+
 
   if (loading) {
     return <div>Cargando...</div>;
@@ -37,10 +33,12 @@ function Productos() {
       <>
           {productos.map((producto) => (
           <Producto
+            key={producto.id}
             id={producto.id}
-            imagen={producto.thumbnail}
-            nombre={producto.title}
-            precio={producto.price}
+            thumbnail={producto.data().thumbnail}
+            nombre={producto.data().title}
+            precio={producto.data().price}
+            categoria={producto.data().categoria}
           />
         ))}
       </>
